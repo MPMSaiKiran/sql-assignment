@@ -18,6 +18,7 @@ ORDER BY
   
  ## windows functions
 
+
 SELECT 
   oi.order_id, 
   o.customer_id, 
