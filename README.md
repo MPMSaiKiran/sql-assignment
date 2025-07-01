@@ -1,12 +1,12 @@
 ## aggregation functions
 
 SELECT
-  p.product_category_name,
-  COUNT(oi.order_id) AS total_orders,
-  SUM(oi.price) AS total_revenue,
-  AVG(oi.price) AS average_price,
-  MIN(oi.price) AS min_price,
-  MAX(oi.price) AS max_price
+p.product_category_name,
+COUNT(oi.order_id) AS total_orders,
+SUM(oi.price) AS total_revenue,
+AVG(oi.price) AS average_price,
+MIN(oi.price) AS min_price,
+MAX(oi.price) AS max_price
 FROM
   olist_order_items AS oi
 JOIN
