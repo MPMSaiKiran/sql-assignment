@@ -1,4 +1,4 @@
-/*aggregation functions*/
+## aggregation functions
 
 SELECT
   p.product_category_name,
@@ -16,7 +16,7 @@ GROUP BY
 ORDER BY
   total_revenue DESC;
   
-/* windows functions*/
+ ## windows functions
 
 SELECT 
   oi.order_id, 
@@ -36,27 +36,23 @@ FROM (
     payment_type,
     payment_installments,
     payment_value,
-    
     ROW_NUMBER() OVER (
       PARTITION BY payment_type
       ORDER BY payment_value DESC
     ) AS row_num,
-    
     RANK() OVER (
       PARTITION BY payment_type
       ORDER BY payment_value DESC
     ) AS rank_in_type,
-    
     DENSE_RANK() OVER (
       PARTITION BY payment_type
       ORDER BY payment_value DESC
     ) AS dense_rank_in_type,
-    
     NTILE(4) OVER (
       PARTITION BY payment_type
       ORDER BY payment_value DESC
     ) AS payment_quartile
-    
+
   FROM olist_order_payments
 ) AS ranked;
 
@@ -117,12 +113,7 @@ SELECT
 FROM olist_order_payments
 ORDER BY payment_type, payment_value;
 
-
-
-
-
-
-/*Top 5 customers & their product type purchase in a given period*/
+## Top 5 customers & their product type purchase in a given period
 SELECT
     c.customer_id,
     c.customer_unique_id,
@@ -138,7 +129,7 @@ GROUP BY c.customer_id, c.customer_unique_id, p.product_category_name
 ORDER BY total_spent DESC
 LIMIT 5;
 
-/*⁠Top 5 orders & order details*/
+##⁠ Top 5 orders & order details
 SELECT
     o.order_id,
     o.customer_id,
@@ -161,7 +152,7 @@ LIMIT 5;
 
 
 
-/*Top customer*/
+## Top customer
 SELECT
   c.customer_id,
   SUM(oi.price) AS total_spent
