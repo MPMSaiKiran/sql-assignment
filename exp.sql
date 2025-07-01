@@ -16,7 +16,7 @@ GROUP BY
 ORDER BY
   total_revenue DESC;
   
-/*This example analyzes order revenue per customer and product category:*/
+/*finding errors for joins*/
 
 SELECT 
   oi.order_id, 
